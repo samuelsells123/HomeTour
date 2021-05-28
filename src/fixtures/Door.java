@@ -5,13 +5,13 @@ import java.util.HashMap;
 public class Door extends Fixture {
 	protected HashMap<String, Room> exits;
 	protected boolean isOpen;
-	protected String openMessage;
 	
-	public Door(String name, String shortDescription, String longDescription, String openMessage) {
-		super(name, shortDescription, longDescription);
+	//for doors, shortDesciption will contain a message for when doors are examined
+	//and longDescription will contain a message for when they are opened
+	public Door(String name, String examineMessage, String openMessage) {
+		super(name, examineMessage, openMessage);
 		this.exits = new HashMap<String, Room>();
 		isOpen = false; // doors are closed by default
-		this.openMessage = openMessage;
 	}
 	
 	//Opens door or prints out message if already open
@@ -20,8 +20,12 @@ public class Door extends Fixture {
 			System.out.println("\n" + "The door is already open.");
 		}
 		else {
-			System.out.println("\n" + openMessage);
+			System.out.println("\n" + longDescription);
 			isOpen = true;
 		}
+	}
+	
+	public void examine() {
+		System.out.println("\n" + shortDescription);
 	}
 }

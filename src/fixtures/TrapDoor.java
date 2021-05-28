@@ -8,8 +8,9 @@ public class TrapDoor extends Door {
 	
 	//TrapDoors are like Doors except the player will have to examine them
 	//to disable their trap, which leads to a different message when opened.
-	public TrapDoor(String name, String shortDescription, String longDescription, String openMessage, String trapMessage) {
-		super(name, shortDescription, longDescription, openMessage);
+	public TrapDoor(String name, String examineMessage, String openMessage, String trapMessage) {
+		super(name, examineMessage, openMessage);
+		this.trapMessage = trapMessage;
 		this.exits = new HashMap<String, Room>();
 	}
 	
@@ -17,10 +18,17 @@ public class TrapDoor extends Door {
 	//sequence of events will result from opening the door.
 	public void open() {
 		if(isTrapped)
-			System.out.println(trapMessage);
+			System.out.println("\n" + trapMessage);
 		else if(isOpen)
 			System.out.println("\n" + "The door is already open.");
-		else
-			System.out.println(openMessage);
+		else {
+			System.out.println("\n" + longDescription);
+			isOpen = true;
+		}
+	}
+	
+	public void examine() {
+		System.out.println("\n" + shortDescription);
+		isTrapped = false;
 	}
 }

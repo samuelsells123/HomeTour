@@ -1,12 +1,10 @@
 package game;
 
-import fixtures.Room;
-
 public class Person {
 	protected String name;
 	protected Dialogue[] conversation;
 	
-	public Person(String name, Room currentRoom, Dialogue[] conversation) {
+	public Person(String name, Dialogue[] conversation) {
 		this.name = name;
 		this.conversation = conversation;
 	}

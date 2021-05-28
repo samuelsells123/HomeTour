@@ -3,15 +3,15 @@ package game;
 import fixtures.Room;
 
 public class Player {
-	protected static Room currentRoom;
-	protected static boolean continuePlaying;
+	protected Room currentRoom;
+	protected boolean continuePlaying;
 	
 	public Player(Room startRoom) {
 		currentRoom = startRoom;
-		continuePlaying = true;
+		continuePlaying = true; //indicates if player has told game to close
 	}
 	
-	public static Room getRoom() {
+	public Room getRoom() {
 		return currentRoom;
 	}
 	
@@ -24,6 +24,6 @@ public class Player {
 	}
 	
 	public void endGame() {
-		continuePlaying = false;;
+		continuePlaying = false;
 	}
 }

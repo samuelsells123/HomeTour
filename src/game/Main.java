@@ -30,22 +30,24 @@ public class Main {
 		scan.close();
 	}
 	
-	//prints the information for the current room as well as what room the player can go to next
+	//prints the information for the current room as well as what rooms the player can go to next
 	private static void printRoom(Player player) {
-		String outputString = "\n" + Player.getRoom().getName() + "\n\n"
-								+ Player.getRoom().getLong() + "\n"
-								+ "Exits: " + "\n";
+		System.out.println("\n" + player.getRoom().getName() + "\n\n"
+								+ player.getRoom().getLong() + "\n"
+								+ "Exits: ");
 		
-		if(Player.getRoom().getExit("north") != null)
-			outputString += "North: " + Player.getRoom().getExit("north").getName() + "\n";
-		if(Player.getRoom().getExit("east") != null)
-			outputString += "East: " + Player.getRoom().getExit("east").getName() + "\n";
-		if(Player.getRoom().getExit("south") != null)
-			outputString += "South: " + Player.getRoom().getExit("south").getName() + "\n";
-		if(Player.getRoom().getExit("west") != null)
-			outputString += "West: " + Player.getRoom().getExit("west").getName() + "\n";
+		printExitOutput(player, "north");
+		printExitOutput(player, "east");
+		printExitOutput(player, "south");
+		printExitOutput(player, "west");
 		
-		System.out.println(outputString);
+		System.out.println("\n");
+	}
+	
+	//function called by printRoom to add exit information to outputString
+	private static void printExitOutput(Player player, String direction) {
+		if(player.getRoom().getExit(direction) != null)
+			System.out.println(direction + ": " + player.getRoom().getExit(direction).getName());
 	}
 
 	//collects player's input from the command line
@@ -67,7 +69,7 @@ public class Main {
 	private static void parse(String[] command, Player player) {
 		switch(command[0].toLowerCase()) {
 			case "go":
-				player.setRoom(Player.getRoom().getExit(command[1]));
+				player.setRoom(player.getRoom().getExit(command[1]));
 				break;
 			
 			/*case "examine":
