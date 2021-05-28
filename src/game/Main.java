@@ -44,7 +44,7 @@ public class Main {
 		System.out.println("\n");
 	}
 	
-	//function called by printRoom to add exit information to outputString
+	//function called by printRoom to print out exit information
 	private static void printExitOutput(Player player, String direction) {
 		if(player.getRoom().getExit(direction) != null)
 			System.out.println(direction + ": " + player.getRoom().getExit(direction).getName());
@@ -69,8 +69,13 @@ public class Main {
 	private static void parse(String[] command, Player player) {
 		switch(command[0].toLowerCase()) {
 			case "go":
-				if(command[1].equals("north") || command[1].equals("east") || command[1].equals("south") || command[1].equals("west"))
-					player.setRoom(player.getRoom().getExit(command[1]));
+				if(command[1].equals("north") || command[1].equals("east") || command[1].equals("south") || command[1].equals("west")) {
+					//checks that exit exists in direction player input
+					if(player.getRoom().getExits().containsKey(command[1]))
+						player.setRoom(player.getRoom().getExit(command[1]));
+					else
+						System.out.println("\n" + "There is no exit in that direction." + "\n");
+				}	
 				else
 					defaultOutput();
 				break;
@@ -89,7 +94,10 @@ public class Main {
 				break;
 				
 			case "exit":
-				player.endGame();
+				if(command[1].equals("game"))
+					player.endGame();
+				else
+					defaultOutput();
 				break;
 				
 			default:
@@ -109,6 +117,6 @@ public class Main {
 							//+ "examine <room/object/person> - examine a room, object, or person more closely" + "\n"
 							//+ "talk <Mom/Sensei/Satoko/___> - talk to other characters" + "\n"
 							//+ "open <door/___> - open door" + "\n"
-							+ "exit - exit game" + "\n");
+							+ "exit game - quit the game" + "\n");
 	}
 }

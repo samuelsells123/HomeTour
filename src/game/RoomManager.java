@@ -1,10 +1,13 @@
 package game;
 
+import java.util.Vector;
+
 import fixtures.Room;
 //import fixtures.Door;
 
 public class RoomManager {
 	protected Room startingRoom;
+	protected Vector<Room> rooms;
 	
 	//creates all rooms and other objects needed for game
 	public void init() {
