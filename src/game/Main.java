@@ -69,7 +69,10 @@ public class Main {
 	private static void parse(String[] command, Player player) {
 		switch(command[0].toLowerCase()) {
 			case "go":
-				player.setRoom(player.getRoom().getExit(command[1]));
+				if(command[1].equals("north") || command[1].equals("east") || command[1].equals("south") || command[1].equals("west"))
+					player.setRoom(player.getRoom().getExit(command[1]));
+				else
+					defaultOutput();
 				break;
 			
 			/*case "examine":
@@ -90,9 +93,13 @@ public class Main {
 				break;
 				
 			default:
-				System.out.println("\n" + "I can't understand what you're telling me to do." + "\n" +
-									"Type the word help to get a list of instructions I'll understand");	
+				defaultOutput();	
 		}
+	}
+	
+	public static void defaultOutput() {
+		System.out.println("\n" + "I can't understand what you're telling me to do." + "\n" +
+							"Type the word help to get a list of instructions I'll understand");
 	}
 	
 	//prints a list of command for user

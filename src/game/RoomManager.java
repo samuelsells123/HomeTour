@@ -82,8 +82,8 @@ public class RoomManager {
 	    Room schoolEntrance = new Room(
     		"School Entrance",
     		"In Front of the School Grounds",
-    		"The school we attend is actually a building built for the forestry service" + "\n"
-    		+ ", only used as a school for the small amount of students that attend here" + "\n"
+    		"The school we attend is actually a building built for the forestry service," + "\n"
+    		+ "only used as a school for the small amount of students that attend here" + "\n"
 			+ "in the countryside." + "\n");
 	    
 	    Room schoolHall = new Room(
