@@ -1,13 +1,15 @@
 package fixtures;
 
+import java.util.HashMap;
+
 public class Door extends Fixture {
-	protected Room[] exits;
+	protected HashMap<String, Room> exits;
 	protected boolean isOpen;
 	protected String openMessage;
 	
 	public Door(String name, String shortDescription, String longDescription, String openMessage) {
 		super(name, shortDescription, longDescription);
-		this.exits = new Room[2]; // size is your choice
+		this.exits = new HashMap<String, Room>();
 		isOpen = false; // doors are closed by default
 		this.openMessage = openMessage;
 	}

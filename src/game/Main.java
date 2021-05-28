@@ -17,7 +17,9 @@ public class Main {
 							+ "Samuel Sells: This is a short text adventure game I made based on Higurashi, " + "\n"
 							+ "a visual novel series which I haven't yet finished but is quickly becoming one " + "\n"
 							+ "of my favorites. This was created mainly to practice computer science " + "\n"
-							+ "concepts, so don't take it very seriously." + "\n\n");
+							+ "concepts, so don't take it very seriously. From here on out, treat the" + "\n"
+							+ "narration as coming from the main character, Keiichi, even though it's also" + "\n"
+							+ "actually written by me" + "\n\n");
 		
 		while(keiichi.status()) {
 			printRoom(keiichi);
@@ -93,7 +95,7 @@ public class Main {
 	
 	//prints a list of command for user
 	private static void help() {
-		System.out.println("Acceptable Commands:" + "\n"
+		System.out.println("\n" + "Acceptable Commands:" + "\n"
 							+ "go <north/south/east/west> - specify a direction to head to another room" + "\n"
 							//+ "examine <room/object/person> - examine a room, object, or person more closely" + "\n"
 							//+ "talk <Mom/Sensei/Satoko/___> - talk to other characters" + "\n"

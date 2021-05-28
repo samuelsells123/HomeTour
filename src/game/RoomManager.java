@@ -33,9 +33,9 @@ public class RoomManager {
 	    this.rooms[1] = homeHall;
 	    
 	    Room centerHouse = new Room (
-			"Stairs",
-			"Bottom of the stairs",
-			"Now that I'm on the first floor, the kitchen and dining room are in front" + "\n"
+			"1st-floor Center",
+			"Center of the 1s Floor",
+			"I'm on the first floor, the kitchen and dining room are in front" + "\n"
 			+ "of me, the living room is to my right, and the entranceway is to my left." + "\n"
 			+ "My mom and dad are already eating breakfast at the dining table. I should" + "\n"
 			+ "probably eat some breakfast and grab my lunch before I head out." + "\n");
@@ -74,15 +74,33 @@ public class RoomManager {
 			+ "door and an umbrella stand on the other." + "\n");
 	    this.rooms[6] = houseEntrance;
 	    
+	    //strings to make adding exits easier
+	    String n = "north";
+	    String e = "east";
+	    String s = "south";
+	    String w = "west";
+	    
 	    //sets exits for all rooms
-	    //1st-North, 2nd-East, 3rd-South, 4th-West
-	    bedroom.setExits(new Room[]{null, null, null, homeHall});
-	    homeHall.setExits(new Room[]{null, bedroom, null, centerHouse});
-	    centerHouse.setExits(new Room[]{houseEntrance, diningRoom, livingRoom, homeHall});
-	    livingRoom.setExits(new Room[]{centerHouse, diningRoom, null, null});
-	    diningRoom.setExits(new Room[]{kitchen, null, livingRoom, centerHouse});
-	    kitchen.setExits(new Room[]{null, null, diningRoom, null});
-	    houseEntrance.setExits(new Room[]{null, null, centerHouse, null});
+	    bedroom.addExit(homeHall, w);
+	    
+	    homeHall.addExit(bedroom, e);
+	    homeHall.addExit(centerHouse, w);
+	    
+	    centerHouse.addExit(livingRoom, n);
+	    centerHouse.addExit(homeHall, e);
+	    centerHouse.addExit(houseEntrance, s);
+	    centerHouse.addExit(diningRoom, w);
+
+	    livingRoom.addExit(centerHouse, s);
+	    livingRoom.addExit(diningRoom, w);
+	    
+	    diningRoom.addExit(livingRoom, n);
+	    diningRoom.addExit(centerHouse, e);
+	    diningRoom.addExit(kitchen, s);
+	    
+	    kitchen.addExit(diningRoom, n);
+	    
+	    houseEntrance.addExit(centerHouse, n);
 	}
 	
 	public Room start() {

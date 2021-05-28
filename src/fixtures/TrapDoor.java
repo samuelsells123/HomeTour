@@ -1,5 +1,7 @@
 package fixtures;
 
+import java.util.HashMap;
+
 public class TrapDoor extends Door {
 	protected boolean isTrapped;
 	protected String trapMessage;
@@ -8,7 +10,7 @@ public class TrapDoor extends Door {
 	//to disable their trap, which leads to a different message when opened.
 	public TrapDoor(String name, String shortDescription, String longDescription, String openMessage, String trapMessage) {
 		super(name, shortDescription, longDescription, openMessage);
-		this.exits = new Room[2]; // size is your choice
+		this.exits = new HashMap<String, Room>();
 	}
 	
 	//Opens the trap door. If the trap has not been disabled, a different
